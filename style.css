@@ -1,10 +1,48 @@
-/* 1. Global Reset & Variables */
+/* =========================================================
+   1. Theme Variables & Executive Styling System
+   ========================================================= */
 :root {
     --bg-color: #f8fafc;
-    --text-color: #1e293b;
+    --text-color: #0f172a;
+    --text-muted: #475569;
     --card-bg: #ffffff;
-    --primary-color: #3b82f6;
+    --hero-bg: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+
+    --primary-color: #1e3a8a;
+    /* Deep Navy */
+    --primary-hover: #172554;
+    --accent-color: #0d9488;
+    /* Fintech Teal */
+    --tag-bg: #e0f2fe;
+    --tag-text: #0369a1;
+
     --border-color: #e2e8f0;
+    --input-bg: #ffffff;
+
+    --card-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+    --card-shadow-hover: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.08);
+}
+
+body.dark-mode {
+    --bg-color: #090d16;
+    /* Obsidian Dark */
+    --text-color: #f8fafc;
+    --text-muted: #94a3b8;
+    --card-bg: #111827;
+    --hero-bg: linear-gradient(135deg, #111827 0%, #0f172a 100%);
+
+    --primary-color: #38bdf8;
+    /* Luminous Sky Blue */
+    --primary-hover: #7dd3fc;
+    --accent-color: #2dd4bf;
+    --tag-bg: #0f2e4a;
+    --tag-text: #7dd3fc;
+
+    --border-color: #1e293b;
+    --input-bg: #0b1120;
+
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(56, 189, 248, 0.15);
 }
 
 * {
@@ -13,192 +51,158 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.6;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* 2. Header & Navigation (using Flexbox) */
+/* =========================================================
+   2. Sticky Navigation Bar
+   ========================================================= */
 header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem;
-    background-color: var(--card-bg);
+    padding: 1.1rem 2.5rem;
+    background-color: rgba(255, 255, 255, 0.85);
     border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 1.5rem;
+body.dark-mode header {
+    background-color: rgba(17, 24, 39, 0.85);
 }
 
-nav a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
-}
-
-nav a:hover {
+.logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
     color: var(--primary-color);
 }
 
-/* 3. Dark Mode Button */
-#theme-toggle {
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-weight: 500;
-}
-
-#theme-toggle:hover {
-    opacity: 0.9;
-}
-
-/* 4. Main Content */
-main {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+.nav-links {
     display: flex;
-    flex-direction: column;
+    list-style: none;
     gap: 2rem;
 }
 
-section {
-    background-color: var(--card-bg);
-    padding: 2rem;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
 }
 
-section h2 {
-    margin-bottom: 0.75rem;
+.nav-links a:hover {
     color: var(--primary-color);
 }
 
-/* 5. Footer */
-footer {
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.9rem;
-    color: #64748b;
+#theme-toggle {
+    padding: 0.5rem 1.1rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1.5px solid var(--primary-color);
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.25s ease;
 }
 
-/* 6. Dark Theme Class (We will toggle this in Step 4 with JavaScript) */
-body.dark-mode {
-    --bg-color: #0f172a;
-    --text-color: #f1f5f9;
-    --card-bg: #1e293b;
-    --border-color: #334155;
-    --primary-color: #60a5fa;
+#theme-toggle:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
 }
 
-/* =========================================
-   Project Cards & Grid Layout
-   ========================================= */
-/* 1. Responsive Grid Container */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
+body.dark-mode #theme-toggle:hover {
+    color: #090d16;
 }
 
-/* 2. Individual Card */
-.project-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    padding: 1.5rem;
+/* =========================================================
+   3. Main Layout & Section Cards
+   ========================================================= */
+main {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    gap: 4rem;
 }
 
-/* Card Hover Animation (lift effect + subtle glow) */
-.project-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-    border-color: var(--primary-color);
+section {
+    padding: 2.75rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
 }
 
-.project-card h3 {
-    margin-bottom: 0.5rem;
+.section-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.35rem;
     color: var(--text-color);
 }
 
-.project-card p {
-    font-size: 0.95rem;
-    color: var(--text-color);
-    opacity: 0.85;
-    margin-bottom: 1rem;
-    line-height: 1.5;
+.section-subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 2rem;
 }
 
-/* 3. Tech Stack Tags / Badges */
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+/* =========================================================
+   4. Hero / About Section & Typewriter
+   ========================================================= */
+.hero-section {
+    background: var(--hero-bg);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    padding: 4.5rem 2rem;
+    border-radius: 20px;
+}
+
+.hero-content h2 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.6rem;
+}
+
+.highlight {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.typewriter-container {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    min-height: 2.2rem;
     margin-bottom: 1.25rem;
 }
 
-.tag {
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.25rem 0.65rem;
-    border-radius: 20px;
-    background-color: var(--border-color);
-    color: var(--text-color);
-}
-
-/* 4. Action Buttons / Links */
-.project-links {
-    display: flex;
-    gap: 0.75rem;
-}
-
-.project-links a {
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-    padding: 0.45rem 0.9rem;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-}
-
-/* Primary Button (e.g., Live Demo) */
-.project-links a.btn-primary {
-    background-color: var(--primary-color);
-    color: #ffffff;
-}
-
-.project-links a.btn-primary:hover {
-    opacity: 0.9;
-}
-
-/* Secondary Button (e.g., GitHub Code) */
-.project-links a.btn-secondary {
-    background-color: transparent;
+#typewriter {
     color: var(--primary-color);
-    border: 1px solid var(--primary-color);
+    font-weight: 700;
 }
 
-.project-links a.btn-secondary:hover {
-    background-color: var(--primary-color);
-    color: #ffffff;
-}
-
-/* Blinking Cursor Animation */
 .cursor {
     font-weight: 700;
     color: var(--primary-color);
@@ -214,5 +218,517 @@ body.dark-mode {
 
     50% {
         opacity: 0;
+    }
+}
+
+.hero-content p {
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* =========================================================
+   5. Reusable Buttons
+   ========================================================= */
+.btn-primary,
+.btn-secondary {
+    display: inline-block;
+    padding: 0.7rem 1.4rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .btn-primary {
+    color: #090d16;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1.5px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   6. Project Grid & Cards
+   ========================================================= */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 1.75rem;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--primary-color);
+}
+
+.project-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--text-color);
+}
+
+.project-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+}
+
+.project-links {
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* =========================================================
+   7. Financial Calculator Styling
+   ========================================================= */
+.calculator-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+}
+
+.calculator-inputs h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.calc-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.calc-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calc-label-row label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.calc-label-row input[type="number"] {
+    width: 140px;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-bg);
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-align: right;
+    outline: none;
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.calculator-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--hero-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.75rem;
+}
+
+.emi-display {
+    text-align: center;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.emi-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.emi-value {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-top: 0.25rem;
+}
+
+.results-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+}
+
+.breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.breakdown-row strong {
+    color: var(--text-color);
+}
+
+.total-row {
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--border-color);
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.total-row strong {
+    color: var(--primary-color);
+}
+
+.ratio-bar {
+    display: flex;
+    height: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--border-color);
+    margin-bottom: 0.75rem;
+}
+
+.principal-fill {
+    background-color: var(--primary-color);
+    transition: width 0.2s ease;
+}
+
+.interest-fill {
+    background-color: var(--accent-color);
+    transition: width 0.2s ease;
+}
+
+.chart-legend {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+
+.principal-dot {
+    background-color: var(--primary-color);
+}
+
+.interest-dot {
+    background-color: var(--accent-color);
+}
+
+/* =========================================================
+   8. Contact Form Styling
+   ========================================================= */
+.contact-container {
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.85rem 1.1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.15);
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group textarea:focus {
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+.submit-btn {
+    align-self: flex-start;
+    padding: 0.8rem 1.8rem;
+}
+
+.form-feedback {
+    margin-top: 0.75rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: none;
+}
+
+.form-feedback.success {
+    display: block;
+    color: #10b981;
+}
+
+/* =========================================================
+   9. Scroll to Top, Footer & Responsiveness
+   ========================================================= */
+#scroll-top {
+    position: fixed;
+    bottom: 2.2rem;
+    right: 2.2rem;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease, background-color 0.2s ease;
+    z-index: 99;
+}
+
+body.dark-mode #scroll-top {
+    color: #090d16;
+}
+
+#scroll-top:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-4px);
+}
+
+footer {
+    text-align: center;
+    padding: 3rem 1rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 1.1rem;
+        padding: 1.2rem 1.5rem;
+    }
+
+    .hero-section {
+        padding: 3rem 1.5rem;
+    }
+
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+
+    section {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .calculator-card {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    /* =========================================================
+   11. Tab Navigation & Form Element Additions
+   ========================================================= */
+    .tabs-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+        justify-content: center;
+    }
+
+    .tab-btn {
+        padding: 0.65rem 1.3rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border-radius: 8px;
+        background-color: var(--card-bg);
+        color: var(--text-muted);
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    .tab-btn:hover {
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+
+    .tab-btn.active {
+        background-color: var(--primary-color);
+        color: #ffffff;
+        border-color: var(--primary-color);
+        box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
+    }
+
+    body.dark-mode .tab-btn.active {
+        color: #090d16;
+        box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+    }
+
+    .tool-panel {
+        display: none;
+        animation: fadeIn 0.35s ease;
+    }
+
+    .tool-panel.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(6px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .calc-select {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        background-color: var(--input-bg);
+        color: var(--text-color);
+        font-size: 0.95rem;
+        outline: none;
+    }
+
+    .calc-group-checkbox,
+    .calc-group-radio {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 0.9rem;
+        margin: 1rem 0;
+        color: var(--text-color);
+    }
+
+    .calc-group-radio {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .adv-notice {
+        font-size: 0.85rem;
+        color: var(--accent-color);
+        font-weight: 600;
+        margin-top: 0.5rem;
     }
 }

@@ -4,99 +4,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Portfolio</title>
+    <title>CA Tushar Gupta | Portfolio & Financial Tools</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Header: Contains the website title & navigation-->
+    <!-- HEADER / NAVIGATION -->
     <header>
-        <h1>
-            CA Tushar Gupta
-        </h1>
+        <div class="logo">CA Tushar Gupta</div>
 
         <nav>
-            <ul>
+            <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#finance-tools">Finance Tools</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
 
-        <!--We will use this button later for dark mode features-->
-        <button id="theme-toggle">Toggle Dark Mode</button>
-
+        <button id="theme-toggle" aria-label="Toggle theme">Toggle Dark Mode</button>
     </header>
 
-    <!-- MAIN: The primary content of the page -->
+    <!-- MAIN CONTENT -->
     <main>
 
-        <section id="about">
-            <h2>About Me</h2>
-            <p>
-                Hi, I'm CA Tushar Gupta — <span id="typewriter"
-                    style="color: var(--primary-color); font-weight: 700;"></span><span class="cursor">|</span>
-            </p>
-
+        <!-- ABOUT / HERO SECTION -->
+        <section id="about" class="hero-section">
+            <div class="hero-content">
+                <h2>Hello, I'm <span class="highlight">CA Tushar Gupta</span></h2>
+                <h3 class="typewriter-container">
+                    I am a <span id="typewriter"></span><span class="cursor">|</span>
+                </h3>
+                <p>
+                    I am a Chartered Accountant passionate about bridging finance, regulatory compliance,
+                    and modern web technology. I build high-performance, interactive financial tools and web
+                    applications.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#finance-tools" class="btn-primary">Try Financial Tools</a>
+                    <a href="#projects" class="btn-secondary">View Projects</a>
+                </div>
+            </div>
         </section>
 
+        <!-- FEATURED PROJECTS SECTION -->
         <section id="projects">
-            <h2>Featured Projects</h2>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">A showcase of software, finance tools, and web applications I have built.</p>
+
             <div class="project-grid">
-                <!-- Project 1 -->
+
+                <!-- Project Card 1 -->
                 <article class="project-card">
-                    <div>
+                    <div class="card-content">
                         <h3>Personal Portfolio Website</h3>
                         <p>
-                            A responsive personal portfolio featuring semantic HTML, custom CSS styling,
-                            and a persistent dark mode toggle using JavaScript and localStorage.
+                            A responsive portfolio featuring semantic HTML, custom CSS variables,
+                            persistent dark mode, typewriter effects, and client-side financial computation widgets.
                         </p>
                         <div class="project-tags">
-                            <span class="tag">HTML</span>
+                            <span class="tag">HTML5</span>
                             <span class="tag">CSS Grid</span>
                             <span class="tag">JavaScript</span>
                             <span class="tag">Git</span>
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="https://tg887.github.io/Personal-Portfolio-Website/" class="btn-primary">Live Demo</a>
-                        <a href="https://github.com/tg887/" target="_blank" class="btn-secondary">GitHub</a>
+                        <a href="#" class="btn-primary">Live Demo</a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+                            class="btn-secondary">GitHub</a>
                     </div>
                 </article>
-                <!-- Project 2 (Placeholder for your next build!) -->
+
+                <!-- Project Card 2 -->
                 <article class="project-card">
-                    <div>
-                        <h3>Financial Expense Tracker</h3>
+                    <div class="card-content">
+                        <h3>Interactive Financial Calculators</h3>
                         <p>
-                            An upcoming interactive dashboard to log income, expenses, and compute real-time balances
-                            with category breakdowns and visual charts.
+                            A real-time financial math engine designed to calculate loan repayments,
+                            amortization balances, and graphical interest-to-principal ratios.
                         </p>
                         <div class="project-tags">
                             <span class="tag">JavaScript</span>
-                            <span class="tag">LocalStorage</span>
-                            <span class="tag">CSS</span>
+                            <span class="tag">Financial Algorithms</span>
+                            <span class="tag">UI/UX</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#finance-tools" class="btn-primary">Test Live</a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+                            class="btn-secondary">GitHub</a>
+                    </div>
+                </article>
+
+                <!-- Project Card 3 -->
+                <article class="project-card">
+                    <div class="card-content">
+                        <h3>Income Tax & GST Estimator</h3>
+                        <p>
+                            An upcoming client-side tool comparing tax slabs under both the New and Old regimes
+                            with instant rebate and surcharge calculation.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Taxation</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Finance</span>
                         </div>
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn-primary">Coming Soon</a>
-                        <a href="https://github.com" target="_blank" class="btn-secondary">GitHub</a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+                            class="btn-secondary">GitHub</a>
                     </div>
                 </article>
+
             </div>
         </section>
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Email me at: <a href="mailto:[EMAIL_ADDRESS]">tg5989486@gmail.com</a></p>
+
+        <!-- FINANCIAL TOOLS SECTION -->
+        <section id="finance-tools">
+            <h2 class="section-title">Interactive Financial Tools</h2>
+            <p class="section-subtitle">Real-time financial mathematics powered by client-side JavaScript.</p>
+
+            <div class="calculator-card">
+                <!-- Inputs & Sliders -->
+                <div class="calculator-inputs">
+                    <h3>Loan & EMI Calculator</h3>
+
+                    <div class="calc-group">
+                        <div class="calc-label-row">
+                            <label for="loan-amount">Loan Amount (₹)</label>
+                            <input type="number" id="loan-amount" min="10000" max="10000000" step="10000"
+                                value="1000000">
+                        </div>
+                        <input type="range" id="loan-amount-range" min="10000" max="10000000" step="10000"
+                            value="1000000">
+                    </div>
+
+                    <div class="calc-group">
+                        <div class="calc-label-row">
+                            <label for="interest-rate">Interest Rate (% p.a.)</label>
+                            <input type="number" id="interest-rate" min="1" max="25" step="0.1" value="8.5">
+                        </div>
+                        <input type="range" id="interest-rate-range" min="1" max="25" step="0.1" value="8.5">
+                    </div>
+
+                    <div class="calc-group">
+                        <div class="calc-label-row">
+                            <label for="loan-tenure">Tenure (Years)</label>
+                            <input type="number" id="loan-tenure" min="1" max="30" step="1" value="5">
+                        </div>
+                        <input type="range" id="loan-tenure-range" min="1" max="30" step="1" value="5">
+                    </div>
+                </div>
+
+                <!-- Results & Visual Ratio Bar -->
+                <div class="calculator-results">
+                    <div class="emi-display">
+                        <span class="emi-label">Monthly EMI</span>
+                        <div class="emi-value" id="res-emi">₹0</div>
+                    </div>
+
+                    <div class="results-breakdown">
+                        <div class="breakdown-row">
+                            <span>Principal Amount:</span>
+                            <strong id="res-principal">₹0</strong>
+                        </div>
+                        <div class="breakdown-row">
+                            <span>Total Interest:</span>
+                            <strong id="res-interest">₹0</strong>
+                        </div>
+                        <div class="breakdown-row total-row">
+                            <span>Total Amount Payable:</span>
+                            <strong id="res-total">₹0</strong>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <div class="ratio-bar">
+                            <div id="bar-principal" class="bar-fill principal-fill" style="width: 70%;"></div>
+                            <div id="bar-interest" class="bar-fill interest-fill" style="width: 30%;"></div>
+                        </div>
+                        <div class="chart-legend">
+                            <span><i class="legend-dot principal-dot"></i> Principal (<span
+                                    id="pct-principal">70%</span>)</span>
+                            <span><i class="legend-dot interest-dot"></i> Interest (<span
+                                    id="pct-interest">30%</span>)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Have a query, collaboration, or project idea? Send me a message!</p>
+
+            <div class="contact-container">
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" required placeholder="Tushar Gupta">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" required placeholder="tg5989486@gmail.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" rows="5" required placeholder="Hello, I'd like to connect..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary submit-btn">Send Message</button>
+                    <p id="form-feedback" class="form-feedback"></p>
+                </form>
+            </div>
+        </section>
+
     </main>
-    <!-- FOOTER: Copyright info, social links, etc. -->
+
+    <!-- FLOATING SCROLL TO TOP BUTTON -->
+    <button id="scroll-top" aria-label="Scroll to top">↑</button>
+
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 TG. All rights reserved.</p>
+        <p>&copy; 2026 CA Tushar Gupta. All rights reserved.</p>
     </footer>
 
-    <!-- Add this right before </body> -->
+    <!-- SCRIPT -->
     <script src="script.js"></script>
+    <script src="finance-tools.js"></script>
 </body>
 
 </html>
