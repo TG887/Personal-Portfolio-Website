@@ -1,15 +1,34 @@
 // 1. Grab the button element from the HTML using its ID
 const toggleButton = document.getElementById("theme-toggle");
 
-// 2. Add a 'click' event listener to the button
-toggleButton.addEventListener('click', () => {
-    // 3. Toggle the 'dark-mode' class on the <body>
-    document.body.classList.toggle('dark-mode');
-
-    // 4. Update the button text depending on whether dark mode is active
-    if (document.body.classList.contains('dark-mode')) {
+// 2. Function to apply a theme and update the button text
+function applyTheme(theme) {
+    if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
         toggleButton.textContent = 'Toggle Light Mode';
     } else {
+        document.body.classList.remove('dark-mode');
         toggleButton.textContent = 'Toggle Dark Mode';
     }
+}
+
+// 3. On page load: Check if the user previously saved a theme preference
+const savedTheme = localStorage.getItem('theme');
+
+// If a preference was saved, apply it (otherwise default to light mode)
+if (savedTheme) {
+    applyTheme(savedTheme);
+}
+
+// 4. Listen for button clicks to toggle and save the new preference
+toggleButton.addEventListener('click', () => {
+    // Check if dark mode is currently active
+    const isDark = document.body.classList.contains('dark-mode');
+
+    // Switch to the opposite theme
+    const newTheme = isDark ? 'light' : 'dark';
+
+    // Apply the theme and save it to localStorage
+    applyTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
 });
