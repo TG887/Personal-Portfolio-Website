@@ -731,4 +731,17 @@ footer {
         font-weight: 600;
         margin-top: 0.5rem;
     }
+
+    /* Logo Link & Active Nav Link */
+    .logo-link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .nav-links a.active-link {
+        color: var(--primary-color);
+        font-weight: 700;
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 4px;
+    }
 }

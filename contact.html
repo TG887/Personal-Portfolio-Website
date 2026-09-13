@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | CA Tushar Gupta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="logo"><a href="index.html" class="logo-link">CA Tushar Gupta</a></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="finance-tools.html">Finance Tools</a></li>
+                <li><a href="contact.html" class="active-link">Contact</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" aria-label="Toggle theme">Toggle Dark Mode</button>
+    </header>
+
+    <main>
+        <section>
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Have a professional inquiry, tax question, or collaboration proposal?</p>
+
+            <div class="contact-container">
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" required placeholder="Tushar Gupta">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" required placeholder="name@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" rows="6" required
+                            placeholder="Hello CA Tushar Gupta, I would like to connect regarding..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary submit-btn">Send Message</button>
+                    <p id="form-feedback" class="form-feedback"></p>
+                </form>
+
+                <div
+                    style="margin-top: 2.5rem; text-align: center; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Prefer direct email?</p>
+                    <p style="font-weight: 700; margin-top: 0.25rem;">
+                        <a href="mailto:tg5989486@gmail.com"
+                            style="color: var(--primary-color); text-decoration: none;">tg5989486@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <button id="scroll-top" aria-label="Scroll to top">↑</button>
+    <footer>
+        <p>&copy; 2026 CA Tushar Gupta. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
