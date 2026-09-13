@@ -197,3 +197,22 @@ body.dark-mode {
     background-color: var(--primary-color);
     color: #ffffff;
 }
+
+/* Blinking Cursor Animation */
+.cursor {
+    font-weight: 700;
+    color: var(--primary-color);
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
